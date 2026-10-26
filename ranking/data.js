@@ -1,7 +1,7 @@
 // generated -- do not edit by hand
 const STUDY = {
  "study": "ranking",
- "version": 3,
+ "version": 4,
  "seed": 20261026,
  "methods": [
   "ours",
@@ -12,33 +12,33 @@ const STUDY = {
  "trials": [
   {
    "id": "t01",
-   "pair": "fantasy_cat__mountain_hiker",
+   "pair": "fantasy_cat__hot_air_balloon",
    "motion": "fantasy_cat",
-   "target": "mountain_hiker",
+   "target": "hot_air_balloon",
    "source": "media/t01_src.mp4",
    "image": "media/t01_target.jpg",
    "aspect": 1.8,
    "videos": {
-    "ours": "media/t01_e956d216.mp4",
-    "dismo": "media/t01_18d2c3b8.mp4",
-    "text": "media/t01_84ab1ed9.mp4",
-    "flexiact": "media/t01_ff61ee0b.mp4"
+    "ours": "media/t01_b156ea1e.mp4",
+    "dismo": "media/t01_1f3aa677.mp4",
+    "text": "media/t01_6459bcee.mp4",
+    "flexiact": "media/t01_1a1f570c.mp4"
    },
    "source_aspect": 0.5667
   },
   {
    "id": "t02",
-   "pair": "fantasy_cat__ocean_jellyfish",
+   "pair": "fantasy_cat__33_alarm_clock",
    "motion": "fantasy_cat",
-   "target": "ocean_jellyfish",
+   "target": "33_alarm_clock",
    "source": "media/t02_src.mp4",
    "image": "media/t02_target.jpg",
-   "aspect": 1.8,
+   "aspect": 1.1053,
    "videos": {
-    "ours": "media/t02_1981d70e.mp4",
-    "dismo": "media/t02_8052f80b.mp4",
-    "text": "media/t02_bf6aeea8.mp4",
-    "flexiact": "media/t02_6a375efb.mp4"
+    "ours": "media/t02_514534a7.mp4",
+    "dismo": "media/t02_536c8952.mp4",
+    "text": "media/t02_4994357a.mp4",
+    "flexiact": "media/t02_ad6a623b.mp4"
    },
    "source_aspect": 0.5667
   },
