@@ -1,4 +1,4 @@
-// built by tools/build_ranking.py -- do not edit by hand
+// generated -- do not edit by hand
 const STUDY = {
  "study": "ranking",
  "version": 1,

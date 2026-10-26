@@ -1,7 +1,6 @@
 /* Receives the answers of the study pages and writes them into the spreadsheet this script is bound to:
    one tab per study (named by the page's `study` field, one row per example), plus a "raw" tab with every submission as received.
-   A submission id that is already in "raw" is acknowledged and not written again, so a page may safely resend.
-   Setup: README.md, "Collecting answers". */
+   A submission id that is already in "raw" is acknowledged and not written again, so a page may safely resend. */
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
