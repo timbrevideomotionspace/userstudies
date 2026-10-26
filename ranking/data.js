@@ -1,7 +1,7 @@
 // generated -- do not edit by hand
 const STUDY = {
  "study": "ranking",
- "version": 4,
+ "version": 19,
  "seed": 20261026,
  "methods": [
   "ours",
@@ -12,129 +12,129 @@ const STUDY = {
  "trials": [
   {
    "id": "t01",
-   "pair": "fantasy_cat__hot_air_balloon",
+   "pair": "fantasy_cat__dutch_windmill",
    "motion": "fantasy_cat",
-   "target": "hot_air_balloon",
+   "target": "dutch_windmill",
    "source": "media/t01_src.mp4",
    "image": "media/t01_target.jpg",
    "aspect": 1.8,
    "videos": {
-    "ours": "media/t01_b156ea1e.mp4",
-    "dismo": "media/t01_1f3aa677.mp4",
-    "text": "media/t01_6459bcee.mp4",
-    "flexiact": "media/t01_1a1f570c.mp4"
+    "ours": "media/t01_1c57ad1e.mp4",
+    "dismo": "media/t01_1bf59ffe.mp4",
+    "text": "media/t01_c52aec80.mp4",
+    "flexiact": "media/t01_c62eb53a.mp4"
    },
    "source_aspect": 0.5667
   },
   {
    "id": "t02",
-   "pair": "fantasy_cat__33_alarm_clock",
+   "pair": "fantasy_cat__fox",
    "motion": "fantasy_cat",
-   "target": "33_alarm_clock",
+   "target": "fox",
    "source": "media/t02_src.mp4",
    "image": "media/t02_target.jpg",
-   "aspect": 1.1053,
+   "aspect": 1.8,
    "videos": {
-    "ours": "media/t02_514534a7.mp4",
-    "dismo": "media/t02_536c8952.mp4",
-    "text": "media/t02_4994357a.mp4",
-    "flexiact": "media/t02_ad6a623b.mp4"
+    "ours": "media/t02_3a38ba26.mp4",
+    "dismo": "media/t02_d1b3c521.mp4",
+    "text": "media/t02_915ea43a.mp4",
+    "flexiact": "media/t02_8b6a7096.mp4"
    },
    "source_aspect": 0.5667
   },
   {
    "id": "t03",
-   "pair": "centaur__13_straw_scarecrow",
+   "pair": "centaur__09_knitted_doll_wide",
    "motion": "centaur",
-   "target": "13_straw_scarecrow",
+   "target": "09_knitted_doll_wide",
    "source": "media/t03_src.mp4",
    "image": "media/t03_target.jpg",
-   "aspect": 0.8182,
+   "aspect": 1.7333,
    "videos": {
-    "ours": "media/t03_2481fbef.mp4",
-    "dismo": "media/t03_35984ce0.mp4",
-    "text": "media/t03_4a65e1e7.mp4",
-    "flexiact": "media/t03_ba4f7b1b.mp4"
+    "ours": "media/t03_49b40ec1.mp4",
+    "dismo": "media/t03_6b735a52.mp4",
+    "text": "media/t03_3922462e.mp4",
+    "flexiact": "media/t03_eda51b12.mp4"
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t04",
-   "pair": "centaur__dutch_windmill",
+   "pair": "centaur__33_alarm_clock",
    "motion": "centaur",
-   "target": "dutch_windmill",
+   "target": "33_alarm_clock",
    "source": "media/t04_src.mp4",
    "image": "media/t04_target.jpg",
-   "aspect": 1.8,
+   "aspect": 1.1053,
    "videos": {
-    "ours": "media/t04_217ca131.mp4",
-    "dismo": "media/t04_9f467e4e.mp4",
-    "text": "media/t04_fb74a6c8.mp4",
-    "flexiact": "media/t04_5b43df53.mp4"
+    "ours": "media/t04_5741957e.mp4",
+    "dismo": "media/t04_029097d4.mp4",
+    "text": "media/t04_9dcc19eb.mp4",
+    "flexiact": "media/t04_5860d45a.mp4"
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t05",
-   "pair": "stone_golem__13_straw_scarecrow",
+   "pair": "stone_golem__36_rooster_weathervane",
    "motion": "stone_golem",
-   "target": "13_straw_scarecrow",
+   "target": "36_rooster_weathervane",
    "source": "media/t05_src.mp4",
    "image": "media/t05_target.jpg",
-   "aspect": 0.8182,
+   "aspect": 0.6667,
    "videos": {
-    "ours": "media/t05_0d98313e.mp4",
-    "dismo": "media/t05_6055f6d3.mp4",
-    "text": "media/t05_f3f35676.mp4",
-    "flexiact": "media/t05_6f044420.mp4"
+    "ours": "media/t05_20a031ba.mp4",
+    "dismo": "media/t05_3681b2a5.mp4",
+    "text": "media/t05_6fd5dd17.mp4",
+    "flexiact": "media/t05_2fab10a4.mp4"
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t06",
-   "pair": "stone_golem__10_paper_boy_wide",
+   "pair": "stone_golem__09_knitted_doll_wide",
    "motion": "stone_golem",
-   "target": "10_paper_boy_wide",
+   "target": "09_knitted_doll_wide",
    "source": "media/t06_src.mp4",
    "image": "media/t06_target.jpg",
    "aspect": 1.7333,
    "videos": {
-    "ours": "media/t06_18cbc6c6.mp4",
-    "dismo": "media/t06_94eabdab.mp4",
-    "text": "media/t06_af27439a.mp4",
-    "flexiact": "media/t06_a4530a56.mp4"
+    "ours": "media/t06_8a79e304.mp4",
+    "dismo": "media/t06_d0829faf.mp4",
+    "text": "media/t06_562f82a7.mp4",
+    "flexiact": "media/t06_09ed2d0d.mp4"
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t07",
-   "pair": "shorts_twirl__36_rooster_weathervane",
+   "pair": "shorts_twirl__13_straw_scarecrow",
    "motion": "shorts_twirl",
-   "target": "36_rooster_weathervane",
+   "target": "13_straw_scarecrow",
    "source": "media/t07_src.mp4",
    "image": "media/t07_target.jpg",
-   "aspect": 0.6667,
+   "aspect": 0.8182,
    "videos": {
-    "ours": "media/t07_394bdfdf.mp4",
-    "dismo": "media/t07_8129037f.mp4",
-    "text": "media/t07_f8d8d6fa.mp4",
-    "flexiact": "media/t07_4df7b0e9.mp4"
+    "ours": "media/t07_88026b16.mp4",
+    "dismo": "media/t07_a44ad134.mp4",
+    "text": "media/t07_47b60ab7.mp4",
+    "flexiact": "media/t07_0024c6b1.mp4"
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t08",
-   "pair": "shorts_twirl__ocean_jellyfish",
+   "pair": "shorts_twirl__23_cartoon_crab",
    "motion": "shorts_twirl",
-   "target": "ocean_jellyfish",
+   "target": "23_cartoon_crab",
    "source": "media/t08_src.mp4",
    "image": "media/t08_target.jpg",
-   "aspect": 1.8,
+   "aspect": 1.5,
    "videos": {
-    "ours": "media/t08_05f69cfd.mp4",
-    "dismo": "media/t08_0b202161.mp4",
-    "text": "media/t08_70fa9670.mp4",
-    "flexiact": "media/t08_0fd0103c.mp4"
+    "ours": "media/t08_229a73c2.mp4",
+    "dismo": "media/t08_00bb045b.mp4",
+    "text": "media/t08_b1efc55a.mp4",
+    "flexiact": "media/t08_f4f4702c.mp4"
    },
    "source_aspect": 1.7778
   },
@@ -156,17 +156,17 @@ const STUDY = {
   },
   {
    "id": "t10",
-   "pair": "09_tiptoe_stretch_relax__ocean_jellyfish",
+   "pair": "09_tiptoe_stretch_relax__brass_telescope",
    "motion": "09_tiptoe_stretch_relax",
-   "target": "ocean_jellyfish",
+   "target": "brass_telescope",
    "source": "media/t10_src.mp4",
    "image": "media/t10_target.jpg",
    "aspect": 1.8,
    "videos": {
-    "ours": "media/t10_c053b7dc.mp4",
-    "dismo": "media/t10_06a24f29.mp4",
-    "text": "media/t10_bdd2667f.mp4",
-    "flexiact": "media/t10_2787cbf7.mp4"
+    "ours": "media/t10_ca348cc4.mp4",
+    "dismo": "media/t10_48ffac4e.mp4",
+    "text": "media/t10_7a9da5dd.mp4",
+    "flexiact": "media/t10_71fb79a7.mp4"
    },
    "source_aspect": 1.7778
   }
