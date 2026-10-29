@@ -24,6 +24,15 @@ const STUDY = {
     "text": "media/t01_b55c8e2c.mp4",
     "flexiact": "media/t01_f2a163a7.mp4"
    },
+   "resampled": {
+    "source": "media_r/t01_src.mp4",
+    "videos": {
+     "ours": "media_r/t01_cb757b34.mp4",
+     "dismo": "media_r/t01_8ae4835a.mp4",
+     "text": "media_r/t01_b55c8e2c.mp4",
+     "flexiact": "media_r/t01_f2a163a7.mp4"
+    }
+   },
    "source_aspect": 0.5667
   },
   {
@@ -39,6 +48,15 @@ const STUDY = {
     "dismo": "media/t02_d1b3c521.mp4",
     "text": "media/t02_915ea43a.mp4",
     "flexiact": "media/t02_8b6a7096.mp4"
+   },
+   "resampled": {
+    "source": "media_r/t02_src.mp4",
+    "videos": {
+     "ours": "media_r/t02_3a38ba26.mp4",
+     "dismo": "media_r/t02_d1b3c521.mp4",
+     "text": "media_r/t02_915ea43a.mp4",
+     "flexiact": "media_r/t02_8b6a7096.mp4"
+    }
    },
    "source_aspect": 0.5667
   },
@@ -56,6 +74,15 @@ const STUDY = {
     "text": "media/t03_3922462e.mp4",
     "flexiact": "media/t03_eda51b12.mp4"
    },
+   "resampled": {
+    "source": "media_r/t03_src.mp4",
+    "videos": {
+     "ours": "media_r/t03_49b40ec1.mp4",
+     "dismo": "media_r/t03_6b735a52.mp4",
+     "text": "media_r/t03_3922462e.mp4",
+     "flexiact": "media_r/t03_eda51b12.mp4"
+    }
+   },
    "source_aspect": 1.7778
   },
   {
@@ -71,6 +98,15 @@ const STUDY = {
     "dismo": "media/t04_029097d4.mp4",
     "text": "media/t04_9dcc19eb.mp4",
     "flexiact": "media/t04_5860d45a.mp4"
+   },
+   "resampled": {
+    "source": "media_r/t04_src.mp4",
+    "videos": {
+     "ours": "media_r/t04_5741957e.mp4",
+     "dismo": "media_r/t04_029097d4.mp4",
+     "text": "media_r/t04_9dcc19eb.mp4",
+     "flexiact": "media_r/t04_5860d45a.mp4"
+    }
    },
    "source_aspect": 1.7778
   },
@@ -88,6 +124,15 @@ const STUDY = {
     "text": "media/t05_f3f35676.mp4",
     "flexiact": "media/t05_6f044420.mp4"
    },
+   "resampled": {
+    "source": "media_r/t05_src.mp4",
+    "videos": {
+     "ours": "media_r/t05_0d98313e.mp4",
+     "dismo": "media_r/t05_6055f6d3.mp4",
+     "text": "media_r/t05_f3f35676.mp4",
+     "flexiact": "media_r/t05_6f044420.mp4"
+    }
+   },
    "source_aspect": 1.7778
   },
   {
@@ -103,6 +148,15 @@ const STUDY = {
     "dismo": "media/t06_d0829faf.mp4",
     "text": "media/t06_562f82a7.mp4",
     "flexiact": "media/t06_09ed2d0d.mp4"
+   },
+   "resampled": {
+    "source": "media_r/t06_src.mp4",
+    "videos": {
+     "ours": "media_r/t06_8a79e304.mp4",
+     "dismo": "media_r/t06_d0829faf.mp4",
+     "text": "media_r/t06_562f82a7.mp4",
+     "flexiact": "media_r/t06_09ed2d0d.mp4"
+    }
    },
    "source_aspect": 1.7778
   },
@@ -120,6 +174,15 @@ const STUDY = {
     "text": "media/t07_47b60ab7.mp4",
     "flexiact": "media/t07_0024c6b1.mp4"
    },
+   "resampled": {
+    "source": "media_r/t07_src.mp4",
+    "videos": {
+     "ours": "media_r/t07_88026b16.mp4",
+     "dismo": "media_r/t07_a44ad134.mp4",
+     "text": "media_r/t07_47b60ab7.mp4",
+     "flexiact": "media_r/t07_0024c6b1.mp4"
+    }
+   },
    "source_aspect": 1.7778
   },
   {
@@ -135,6 +198,15 @@ const STUDY = {
     "dismo": "media/t08_00bb045b.mp4",
     "text": "media/t08_b1efc55a.mp4",
     "flexiact": "media/t08_f4f4702c.mp4"
+   },
+   "resampled": {
+    "source": "media_r/t08_src.mp4",
+    "videos": {
+     "ours": "media_r/t08_229a73c2.mp4",
+     "dismo": "media_r/t08_00bb045b.mp4",
+     "text": "media_r/t08_b1efc55a.mp4",
+     "flexiact": "media_r/t08_f4f4702c.mp4"
+    }
    },
    "source_aspect": 1.7778
   },
@@ -152,6 +224,15 @@ const STUDY = {
     "text": "media/t09_be14b2f5.mp4",
     "flexiact": "media/t09_9c7bc335.mp4"
    },
+   "resampled": {
+    "source": "media_r/t09_src.mp4",
+    "videos": {
+     "ours": "media_r/t09_b49dfd6b.mp4",
+     "dismo": "media_r/t09_85eaccb7.mp4",
+     "text": "media_r/t09_be14b2f5.mp4",
+     "flexiact": "media_r/t09_9c7bc335.mp4"
+    }
+   },
    "source_aspect": 1.7778
   },
   {
@@ -167,6 +248,15 @@ const STUDY = {
     "dismo": "media/t10_6443f0f6.mp4",
     "text": "media/t10_0d69f748.mp4",
     "flexiact": "media/t10_674de3dc.mp4"
+   },
+   "resampled": {
+    "source": "media_r/t10_src.mp4",
+    "videos": {
+     "ours": "media_r/t10_e3c183eb.mp4",
+     "dismo": "media_r/t10_6443f0f6.mp4",
+     "text": "media_r/t10_0d69f748.mp4",
+     "flexiact": "media_r/t10_674de3dc.mp4"
+    }
    },
    "source_aspect": 1.7778
   }
