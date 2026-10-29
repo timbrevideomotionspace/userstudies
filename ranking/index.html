@@ -169,8 +169,8 @@ $('steps').innerHTML = [
   `Next to them are four videos that animate the target image with the source's motion, each made by a different method. Their order is shuffled every time.`,
   `Click the four videos from <b>best to worst</b>. Judge overall: how closely the video follows the source motion while keeping the look of the target image.`,
 ].map(s => `<li>${s}</li>`).join('');
-$('ask').innerHTML = `<b>Click the videos from best to worst.</b> Judge how closely each follows the source motion while keeping the look of
-  the target image. Click a ranked video again to take it out.`;
+$('ask').innerHTML = `Click the videos from <b>best to worst</b>. Judge how closely each <b>follows the source motion</b> with
+  <b>minimal artefacts added to target subject</b>. Click a ranked video again to take it out.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
