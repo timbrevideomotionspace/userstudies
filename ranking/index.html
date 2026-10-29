@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* Ranking study: intro -> 10 examples (source motion above the target image on the left; four shuffled videos A-D on the right, click
-   them best to worst) -> answers posted to the sheet (config.js ENDPOINT, tab ranking_motion). Nothing on screen says which method made
-   which video. (The birthday split with a Jul-Dec realism task was removed 2026-10-29; everyone does the motion task.)
+   the best, then the second best; the other two stay unranked) -> answers posted to the sheet (config.js ENDPOINT, tab ranking_motion).
+   Nothing on screen says which method made which video. (The birthday split with a Jul-Dec realism task was removed 2026-10-29; everyone does the motion task.)
    The intro picks the video version: original (display copies, 2.75 s) or resampled (media_r/: 25 frames at 9 fps); sent as `videos`. */
 :root {
   --bg: #f4f5f7; --panel: #ffffff; --ink: #15171f; --muted: #5b6070; --line: #d9dce4; --accent: #2f5bd3; --accent-ink: #ffffff;
@@ -146,7 +146,7 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
 <script src="../config.js"></script>
 <script src="data.js"></script>
 <script>
-const LETTERS = ['A', 'B', 'C', 'D'], ORD = ['1st', '2nd', '3rd', '4th'], DONE_KEY = `us_${STUDY.study}_v${STUDY.version}_done`;
+const LETTERS = ['A', 'B', 'C', 'D'], ORD = ['1st', '2nd'], DONE_KEY = `us_${STUDY.study}_v${STUDY.version}_done`;
 const $ = id => document.getElementById(id);
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -167,10 +167,10 @@ const V = t => mode === 'resampled' ? t.resampled : t;   // which copies to play
 $('steps').innerHTML = [
   `Each of the <b>${plan.length}</b> examples shows a <b>source video</b> with a motion and a <b>target image</b>.`,
   `Next to them are four videos that animate the target image with the source's motion, each made by a different method. Their order is shuffled every time.`,
-  `Click the four videos from <b>best to worst</b>. Judge overall: how closely the video follows the source motion while keeping the look of the target image.`,
+  `Click the <b>best</b> video, then the <b>second best</b>. Judge overall: how closely the video follows the source motion while keeping the look of the target image.`,
 ].map(s => `<li>${s}</li>`).join('');
-$('ask').innerHTML = `Click the videos from <b>best to worst</b>. Judge how closely each <b>follows the source motion</b> with
-  <b>minimal artefacts added to target subject</b>. Click a ranked video again to take it out.`;
+$('ask').innerHTML = `Click the <b>best</b> video, then the <b>second best</b>. Judge how closely each <b>follows the source motion</b> with
+  <b>minimal artefacts added to target subject</b>. Click a picked video again to take it out.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
@@ -214,17 +214,17 @@ function paint() {
   $('cands').querySelectorAll('.cand').forEach(b => {
     const j = +b.dataset.j, r = p.order.indexOf(j);
     b.classList.toggle('on', r >= 0); b.querySelector('.badge').textContent = r >= 0 ? ORD[r] : '';
-    b.setAttribute('aria-label', `Video ${LETTERS[j]}${r >= 0 ? `, ranked ${ORD[r]}` : ', not ranked yet'}`);
+    b.setAttribute('aria-label', `Video ${LETTERS[j]}${r >= 0 ? `, picked ${ORD[r]}` : ', not picked'}`);
   });
-  $('slots').innerHTML = `<span class="end">Best</span>` + ORD.map((o, r) => {
+  $('slots').innerHTML = ORD.map((o, r) => {
     const j = p.order[r]; return `<span class="slot ${j != null ? 'full' : ''}"><small>${o}</small><b>${j != null ? LETTERS[j] : '–'}</b></span>`;
-  }).join('') + `<span class="end">Worst</span>`;
-  $('next').disabled = p.order.length < LETTERS.length;
+  }).join('');
+  $('next').disabled = p.order.length < ORD.length;
 }
 
 function toggle(j) {
   const o = plan[cur].order, r = o.indexOf(j);
-  if (r >= 0) o.splice(r, 1); else if (o.length < LETTERS.length) o.push(j);
+  if (r >= 0) o.splice(r, 1); else if (o.length < ORD.length) o.push(j);
   paint();
 }
 
@@ -247,7 +247,7 @@ function finish() {
   const rows = plan.map((p, n) => {
     const order = p.order.map(j => p.shown[j]);
     return [sub, pid, 'motion', mode, n + 1, p.t.id, p.t.pair, p.t.motion, p.t.target, order.join(' > '),
-      ...STUDY.methods.map(k => order.indexOf(k) + 1), p.shown.map((k, j) => `${LETTERS[j]}=${k}`).join(' '), Math.round(p.ms / 100) / 10,
+      ...STUDY.methods.map(k => order.indexOf(k) + 1 || ''), p.shown.map((k, j) => `${LETTERS[j]}=${k}`).join(' '), Math.round(p.ms / 100) / 10,
       started, fin, scr, navigator.userAgent];
   });
   payload = {study: `${STUDY.study}_motion`, task: 'motion', videos: mode, version: STUDY.version, seed: STUDY.seed, submission: sub, participant: pid, started,
