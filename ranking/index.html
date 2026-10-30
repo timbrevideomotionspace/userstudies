@@ -170,8 +170,8 @@ $('steps').innerHTML = [
   `Click the <b>best</b> video, then the <b>second best</b>. Judge overall: how closely the video follows the source motion while keeping the look of the target image.`,
 ].map(s => `<li>${s}</li>`).join('');
 $('ask').innerHTML = `Click the <b>best</b> video, then the <b>second best</b>. Judge how closely each <b>follows the source motion</b>
-  while <b>nothing else from the source video carries over</b> to the target subject (not the source's appearance, clothes, body shape or
-  background), with minimal artifacts. Click a picked video again to take it out.`;
+  while <b>nothing else from the source video carries over</b> to the target subject (not the source's appearance, clothes, body shape,
+  material or texture, background, or anything else: if the source is a stone golem, no stone should show up on the target subject), with minimal artifacts. Click a picked video again to take it out.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
