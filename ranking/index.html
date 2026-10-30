@@ -10,7 +10,7 @@
 /* Ranking study: intro -> 10 examples (source motion above the target image on the left; four shuffled videos A-D on the right, click
    the best, then the second best; the other two stay unranked) -> answers posted to the sheet (config.js ENDPOINT, tab ranking_motion).
    Nothing on screen says which method made which video. (The birthday split with a Jul-Dec realism task was removed 2026-10-29; everyone does the motion task.)
-   The intro picks the video version: original (display copies, 2.75 s) or resampled (media_r/: 25 frames at 9 fps); sent as `videos`. */
+   Videos are always the resampled copies (media_r/: 25 frames at 9 fps; user 2026-10-30, no choice on the intro); sent as `videos`. */
 :root {
   --bg: #f4f5f7; --panel: #ffffff; --ink: #15171f; --muted: #5b6070; --line: #d9dce4; --accent: #2f5bd3; --accent-ink: #ffffff;
   --accent-soft: #e4eafb; --frame: #0b0c10; --warn: #9a3412; --warn-soft: #fdeee4;
@@ -43,7 +43,6 @@ ol.steps { margin: 0; padding-left: 1.3em; display: grid; gap: 8px }
 .linkish { all: unset; cursor: pointer; color: var(--accent); text-decoration: underline; font-size: .9rem }
 .linkish:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
 .howto { display: grid; gap: 14px }
-.btn.opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent) }
 .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center }
 
 /* trial */
@@ -102,10 +101,7 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
     <div id="howto" class="howto">
       <ol class="steps" id="steps"></ol>
       <p class="muted">All videos loop and play together. There are no right answers; go with your impression. A laptop or desktop screen works best.</p>
-      <div class="row" role="group" aria-labelledby="optlab"><b id="optlab">Videos:</b>
-        <button type="button" class="btn opt" data-mode="original" aria-pressed="false">Original</button>
-        <button type="button" class="btn opt" data-mode="resampled" aria-pressed="false">Resampled</button></div>
-      <div class="row"><button type="button" class="btn primary" id="start" disabled>Start</button></div>
+      <div class="row"><button type="button" class="btn primary" id="start">Start</button></div>
     </div>
     <p class="notice" id="preview" hidden>Preview mode: no answer endpoint is set in config.js, so nothing will be sent.</p>
   </div>
@@ -161,7 +157,7 @@ const pid = store.get('us_pid') || uid(); store.set('us_pid', pid);
 const sub = uid(), endpoint = typeof ENDPOINT === 'string' ? ENDPOINT.trim() : '';
 // every participant gets their own example order and their own video positions within each example
 const plan = shuffle(STUDY.trials).map(t => ({t, shown: shuffle(STUDY.methods), order: [], ms: 0}));
-let cur = -1, t0 = 0, started = null, payload = null, warm = [], mode = null;
+let cur = -1, t0 = 0, started = null, payload = null, warm = [], mode = 'resampled';
 const V = t => mode === 'resampled' ? t.resampled : t;   // which copies to play: original, or 25 frames at 9 fps
 
 $('steps').innerHTML = [
@@ -175,10 +171,7 @@ $('ask').innerHTML = `Click the <b>best</b> and <b>second best</b> video. Judge 
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
-document.querySelectorAll('.opt').forEach(b => b.onclick = () => {
-  mode = b.dataset.mode; document.querySelectorAll('.opt').forEach(o => o.setAttribute('aria-pressed', o === b)); $('start').disabled = false;
-});
-$('start').onclick = () => { if (!mode) return; started = new Date().toISOString(); $('intro').hidden = true; $('trial').hidden = false; show(0); };
+$('start').onclick = () => { started = new Date().toISOString(); $('intro').hidden = true; $('trial').hidden = false; show(0); };
 
 function sync(vs) {                         // the first clip (the source) restarts everything, so all clips stay in step
   const master = vs[0], restart = () => vs.forEach(v => { try { v.currentTime = 0; v.play().catch(() => {}); } catch (e) {} });
