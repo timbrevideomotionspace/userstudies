@@ -169,9 +169,9 @@ $('steps').innerHTML = [
   `Next to them are four videos that animate the target image with the source's motion, each made by a different method. Their order is shuffled every time.`,
   `Click the <b>best</b> video, then the <b>second best</b>. Judge overall: how closely the video follows the source motion while keeping the look of the target image.`,
 ].map(s => `<li>${s}</li>`).join('');
-$('ask').innerHTML = `Click the <b>best</b> video, then the <b>second best</b>. Judge how closely each <b>follows the source motion</b>
-  while <b>nothing else from the source video carries over</b> to the target subject (none of the source's look: not its appearance,
-  clothes, body shape, material or surface texture, background, or any other trait), with minimal artifacts. Click a picked video again to take it out.`;
+$('ask').innerHTML = `Click the <b>best</b> and <b>second best</b> video. Judge on three things: <b>how closely it reproduces the source motion,
+  whether the target subject stays itself</b>, with nothing from the source carrying over (not its appearance, clothing, body shape, material,
+  texture, or background); and <b>whether the result looks natural for that subject</b>. Click a selected video again to deselect it.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
