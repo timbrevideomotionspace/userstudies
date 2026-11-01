@@ -35,6 +35,7 @@ h2 { font: 650 1.3rem/1.2 var(--body); margin: 0 }
 .card p { margin: 0 } .muted { color: var(--muted) }
 ol.steps { margin: 0; padding-left: 1.3em; display: grid; gap: 8px }
 .notice { background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 10px 14px; font-size: .92rem }
+textarea#comment-t { width: 100%; font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; resize: vertical }
 .btn { cursor: pointer; border: 1px solid var(--line); background: var(--panel); padding: 9px 18px; border-radius: 9px; font-weight: 600 }
 .btn:hover:not(:disabled) { border-color: var(--muted) }
 .btn:disabled { opacity: .4; cursor: default }
@@ -130,6 +131,16 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
   </footer>
 </main>
 
+<main id="comment" class="screen" hidden>
+  <div class="card">
+    <h2>One last question (optional)</h2>
+    <p>What did you mainly base your choices on?</p>
+    <textarea id="comment-t" rows="4" maxlength="1500" placeholder="Optional"></textarea>
+    <div class="row"><button type="button" class="btn" id="comment-back">Back</button>
+      <button type="button" class="btn primary" id="comment-send">Submit answers</button></div>
+  </div>
+</main>
+
 <main id="done" class="screen" hidden>
   <div class="card">
     <h2 id="done-h">Sending your answers…</h2>
@@ -168,8 +179,9 @@ $('steps').innerHTML = [
    motion, not the objects the character may be interacting with in the source video. Those objects could be discarded in your judgment.`,
 ].map(s => `<li>${s}</li>`).join('');
 $('ask').innerHTML = `Click the <b>best</b> and the <b>second best</b> videos on the right. Please make your judgements based on three criteria:
-  a) <b>how closely the resulting video reproduces the source motion</b>; b) <b>does the target subject stays itself</b>, with nothing from the source
-  video carrying over (e.g., appearance, clothing, body shape, material, texture, or background); and c) <b>does the result look natural for that
+  a) <b>how closely the resulting video reproduces the source motion</b>; b) <b>is it still the same target subject</b>: its pose may change to perform the motion, but it should not
+  turn into something else, and nothing from the source video (e.g., appearance, clothing, body shape, material, texture, or background)
+  should carry over; and c) <b>does the result look natural for that
   subject</b>, without extraneous visual artifacts. If you want an undo, simply click on the selected video again to deselect it.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
@@ -228,7 +240,11 @@ function toggle(j) {
 $('cands').addEventListener('click', e => { const b = e.target.closest('.cand'); if (b) toggle(+b.dataset.j); });
 $('reset').onclick = () => { plan[cur].order = []; paint(); };
 $('back').onclick = () => cur > 0 && show(cur - 1);
-$('next').onclick = () => { if ($('next').disabled) return; cur < plan.length - 1 ? show(cur + 1) : finish(); };
+$('next').onclick = () => { if ($('next').disabled) return; cur < plan.length - 1 ? show(cur + 1) : toComment(); };
+// after the last question: an optional free-text "what did you base your choices on?" (user 2026-11-01), then the answers are sent
+function toComment() { plan[cur].ms += performance.now() - t0; $('trial').hidden = true; $('comment').hidden = false; $('comment-t').focus(); }
+$('comment-back').onclick = () => { $('comment').hidden = true; $('trial').hidden = false; t0 = performance.now(); };
+$('comment-send').onclick = () => finish();
 document.addEventListener('keydown', e => {
   if ($('trial').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
   const j = LETTERS.indexOf(e.key.toUpperCase());
@@ -237,19 +253,19 @@ document.addEventListener('keydown', e => {
 window.addEventListener('beforeunload', e => { if (started && !payload) { e.preventDefault(); e.returnValue = ''; } });
 
 function finish() {
-  plan[cur].ms += performance.now() - t0;
+  const comment = $('comment-t').value.trim();
   const fin = new Date().toISOString(), scr = `${screen.width}x${screen.height}`;
   const columns = ['submission', 'participant', 'task', 'videos', 'position', 'trial', 'pair', 'motion', 'target', 'ranking',
-    ...STUDY.methods.map(k => `rank_${k}`), 'shown', 'seconds', 'started', 'finished', 'screen', 'user_agent'];
+    ...STUDY.methods.map(k => `rank_${k}`), 'shown', 'seconds', 'started', 'finished', 'screen', 'user_agent', 'comment'];   // comment: first row only
   const rows = plan.map((p, n) => {
     const order = p.order.map(j => p.shown[j]);
     return [sub, pid, 'motion', mode, n + 1, p.t.id, p.t.pair, p.t.motion, p.t.target, order.join(' > '),
       ...STUDY.methods.map(k => order.indexOf(k) + 1 || ''), p.shown.map((k, j) => `${LETTERS[j]}=${k}`).join(' '), Math.round(p.ms / 100) / 10,
-      started, fin, scr, navigator.userAgent];
+      started, fin, scr, navigator.userAgent, n ? '' : comment];
   });
   payload = {study: `${STUDY.study}_motion`, task: 'motion', videos: mode, version: STUDY.version, seed: STUDY.seed, submission: sub, participant: pid, started,
-    finished: fin, columns, rows};
-  $('trial').hidden = true; $('done').hidden = false; send();
+    finished: fin, comment, columns, rows};
+  $('comment').hidden = true; $('done').hidden = false; send();
 }
 
 async function send() {
