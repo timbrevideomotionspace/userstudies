@@ -95,12 +95,12 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
 
 <main id="intro" class="screen">
   <div class="card">
-    <h1>Motion transfer study</h1>
-    <p>Thank you for taking part. It takes about 5 minutes and is anonymous.</p>
+    <h1>User study on motion transfer</h1>
+    <p>Thank you for taking part. The study is anonymous and it contains 10 questions, which should take about 5-10 minutes to complete.</p>
     <p class="notice" id="again" hidden>You have already completed this study on this device. Thank you! <button type="button" class="linkish" id="again-go">Take it again anyway</button></p>
     <div id="howto" class="howto">
       <ol class="steps" id="steps"></ol>
-      <p class="muted">All videos loop and play together. There are no right answers; go with your impression. A laptop or desktop screen works best.</p>
+      <p class="muted">All videos loop and play together. Please take your time and watch the results carefully before marking your choices. A laptop or desktop screen works best.</p>
       <div class="row"><button type="button" class="btn primary" id="start">Start</button></div>
     </div>
     <p class="notice" id="preview" hidden>Preview mode: no answer endpoint is set in config.js, so nothing will be sent.</p>
@@ -161,13 +161,15 @@ let cur = -1, t0 = 0, started = null, payload = null, warm = [], mode = 'resampl
 const V = t => mode === 'resampled' ? t.resampled : t;   // which copies to play: original, or 25 frames at 9 fps
 
 $('steps').innerHTML = [
-  `Each of the <b>${plan.length}</b> examples shows a <b>source video</b> with a motion and a <b>target image</b>.`,
-  `Next to them are four videos that animate the target image with the source's motion, each made by a different method. Their order is shuffled every time.`,
-  `Click the <b>best</b> video, then the <b>second best</b>. Judge overall: how closely the video follows the source motion while keeping the look of the target image.`,
+  `In each of the 10 questions, you will see, on the left column, a <b>source video</b> showing a motion and an image containing the <b>target subject</b>.`,
+  `To their right are four videos that transfer the source motion onto the target subject, each produced by a different method. Their order is shuffled for every question.`,
+  `Click the <b>best</b> video result, then the <b>second best</b>. Please make your choice by judging how closely the resulting video follows the source motion
+   while keeping the appearance of the target subject, without extraneous visual artifacts.`,
 ].map(s => `<li>${s}</li>`).join('');
-$('ask').innerHTML = `Click the <b>best</b> and <b>second best</b> video. Judge on three things: <b>how closely it reproduces the source motion,
-  whether the target subject stays itself</b>, with nothing from the source carrying over (not its appearance, clothing, body shape, material,
-  texture, or background); and <b>whether the result looks natural for that subject</b>. Click a selected video again to deselect it.`;
+$('ask').innerHTML = `Click the <b>best</b> and the <b>second best</b> videos on the right. Please make your judgements based on three criteria:
+  a) <b>how closely the resulting video reproduces the source motion</b>; b) <b>does the target subject stays itself</b>, with nothing from the source
+  video carrying over (e.g., appearance, clothing, body shape, material, texture, or background); and c) <b>does the result look natural for that
+  subject</b>, without extraneous visual artifacts. If you want an undo, simply click on the selected video again to deselect it.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
