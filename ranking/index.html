@@ -164,7 +164,8 @@ $('steps').innerHTML = [
   `In each of the 10 questions, you will see, on the left column, a <b>source video</b> showing a motion and an image containing the <b>target subject</b>.`,
   `To their right are four videos that transfer the source motion onto the target subject, each produced by a different method. Their order is shuffled for every question.`,
   `Click the <b>best</b> video result, then the <b>second best</b>. Please make your choice by judging how closely the resulting video follows the source motion
-   while keeping the appearance of the target subject, without extraneous visual artifacts.`,
+   while keeping the appearance of the target subject, without extraneous visual artifacts. In particular, please focus on the transfer of the character’s
+   motion, not the objects the character may be interacting with in the source video. Those objects could be discarded in your judgment.`,
 ].map(s => `<li>${s}</li>`).join('');
 $('ask').innerHTML = `Click the <b>best</b> and the <b>second best</b> videos on the right. Please make your judgements based on three criteria:
   a) <b>how closely the resulting video reproduces the source motion</b>; b) <b>does the target subject stays itself</b>, with nothing from the source
