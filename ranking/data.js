@@ -1,7 +1,7 @@
 // generated -- do not edit by hand
 const STUDY = {
  "study": "ranking",
- "version": 24,
+ "version": 37,
  "seed": 20261026,
  "methods": [
   "ours",
@@ -62,200 +62,200 @@ const STUDY = {
   },
   {
    "id": "t03",
-   "pair": "centaur__23_cartoon_crab",
+   "pair": "centaur__33_alarm_clock",
    "motion": "centaur",
-   "target": "23_cartoon_crab",
+   "target": "33_alarm_clock",
    "source": "media/t03_src.mp4",
    "image": "media/t03_target.jpg",
-   "aspect": 1.5,
+   "aspect": 1.1053,
    "videos": {
-    "ours": "media/t03_6429e168.mp4",
-    "dismo": "media/t03_a73b99a2.mp4",
-    "text": "media/t03_059ae778.mp4",
-    "flexiact": "media/t03_eeb74a12.mp4"
+    "ours": "media/t03_5741957e.mp4",
+    "dismo": "media/t03_029097d4.mp4",
+    "text": "media/t03_9dcc19eb.mp4",
+    "flexiact": "media/t03_5860d45a.mp4"
    },
    "resampled": {
     "source": "media_r/t03_src.mp4",
     "videos": {
-     "ours": "media_r/t03_6429e168.mp4",
-     "dismo": "media_r/t03_a73b99a2.mp4",
-     "text": "media_r/t03_059ae778.mp4",
-     "flexiact": "media_r/t03_eeb74a12.mp4"
+     "ours": "media_r/t03_5741957e.mp4",
+     "dismo": "media_r/t03_029097d4.mp4",
+     "text": "media_r/t03_9dcc19eb.mp4",
+     "flexiact": "media_r/t03_5860d45a.mp4"
     }
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t04",
-   "pair": "centaur__33_alarm_clock",
+   "pair": "centaur__23_cartoon_crab",
    "motion": "centaur",
-   "target": "33_alarm_clock",
+   "target": "23_cartoon_crab",
    "source": "media/t04_src.mp4",
    "image": "media/t04_target.jpg",
-   "aspect": 1.1053,
+   "aspect": 1.5,
    "videos": {
-    "ours": "media/t04_5741957e.mp4",
-    "dismo": "media/t04_029097d4.mp4",
-    "text": "media/t04_9dcc19eb.mp4",
-    "flexiact": "media/t04_5860d45a.mp4"
+    "ours": "media/t04_6429e168.mp4",
+    "dismo": "media/t04_a73b99a2.mp4",
+    "text": "media/t04_059ae778.mp4",
+    "flexiact": "media/t04_eeb74a12.mp4"
    },
    "resampled": {
     "source": "media_r/t04_src.mp4",
     "videos": {
-     "ours": "media_r/t04_5741957e.mp4",
-     "dismo": "media_r/t04_029097d4.mp4",
-     "text": "media_r/t04_9dcc19eb.mp4",
-     "flexiact": "media_r/t04_5860d45a.mp4"
+     "ours": "media_r/t04_6429e168.mp4",
+     "dismo": "media_r/t04_a73b99a2.mp4",
+     "text": "media_r/t04_059ae778.mp4",
+     "flexiact": "media_r/t04_eeb74a12.mp4"
     }
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t05",
-   "pair": "stone_golem__13_straw_scarecrow",
-   "motion": "stone_golem",
+   "pair": "03_step_forward_wave_step_back__13_straw_scarecrow",
+   "motion": "03_step_forward_wave_step_back",
    "target": "13_straw_scarecrow",
    "source": "media/t05_src.mp4",
    "image": "media/t05_target.jpg",
    "aspect": 0.8182,
    "videos": {
-    "ours": "media/t05_0d98313e.mp4",
-    "dismo": "media/t05_6055f6d3.mp4",
-    "text": "media/t05_f3f35676.mp4",
-    "flexiact": "media/t05_6f044420.mp4"
+    "ours": "media/t05_89b291f5.mp4",
+    "dismo": "media/t05_f92075f3.mp4",
+    "text": "media/t05_62b3403f.mp4",
+    "flexiact": "media/t05_2b24ed63.mp4"
    },
    "resampled": {
     "source": "media_r/t05_src.mp4",
     "videos": {
-     "ours": "media_r/t05_0d98313e.mp4",
-     "dismo": "media_r/t05_6055f6d3.mp4",
-     "text": "media_r/t05_f3f35676.mp4",
-     "flexiact": "media_r/t05_6f044420.mp4"
+     "ours": "media_r/t05_89b291f5.mp4",
+     "dismo": "media_r/t05_f92075f3.mp4",
+     "text": "media_r/t05_62b3403f.mp4",
+     "flexiact": "media_r/t05_2b24ed63.mp4"
     }
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t06",
-   "pair": "stone_golem__09_knitted_doll_wide",
-   "motion": "stone_golem",
-   "target": "09_knitted_doll_wide",
+   "pair": "03_step_forward_wave_step_back__mountain_hiker",
+   "motion": "03_step_forward_wave_step_back",
+   "target": "mountain_hiker",
    "source": "media/t06_src.mp4",
    "image": "media/t06_target.jpg",
-   "aspect": 1.7333,
+   "aspect": 1.8,
    "videos": {
-    "ours": "media/t06_8a79e304.mp4",
-    "dismo": "media/t06_d0829faf.mp4",
-    "text": "media/t06_562f82a7.mp4",
-    "flexiact": "media/t06_09ed2d0d.mp4"
+    "ours": "media/t06_b7e70e4d.mp4",
+    "dismo": "media/t06_756c2147.mp4",
+    "text": "media/t06_a976a387.mp4",
+    "flexiact": "media/t06_86d7939b.mp4"
    },
    "resampled": {
     "source": "media_r/t06_src.mp4",
     "videos": {
-     "ours": "media_r/t06_8a79e304.mp4",
-     "dismo": "media_r/t06_d0829faf.mp4",
-     "text": "media_r/t06_562f82a7.mp4",
-     "flexiact": "media_r/t06_09ed2d0d.mp4"
+     "ours": "media_r/t06_b7e70e4d.mp4",
+     "dismo": "media_r/t06_756c2147.mp4",
+     "text": "media_r/t06_a976a387.mp4",
+     "flexiact": "media_r/t06_86d7939b.mp4"
     }
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t07",
-   "pair": "shorts_twirl__13_straw_scarecrow",
+   "pair": "shorts_twirl__10_paper_boy_wide",
    "motion": "shorts_twirl",
-   "target": "13_straw_scarecrow",
+   "target": "10_paper_boy_wide",
    "source": "media/t07_src.mp4",
    "image": "media/t07_target.jpg",
-   "aspect": 0.8182,
+   "aspect": 1.7333,
    "videos": {
-    "ours": "media/t07_88026b16.mp4",
-    "dismo": "media/t07_a44ad134.mp4",
-    "text": "media/t07_47b60ab7.mp4",
-    "flexiact": "media/t07_0024c6b1.mp4"
+    "ours": "media/t07_b81d6f79.mp4",
+    "dismo": "media/t07_54f5eba7.mp4",
+    "text": "media/t07_db7ba09b.mp4",
+    "flexiact": "media/t07_2aa3ab23.mp4"
    },
    "resampled": {
     "source": "media_r/t07_src.mp4",
     "videos": {
-     "ours": "media_r/t07_88026b16.mp4",
-     "dismo": "media_r/t07_a44ad134.mp4",
-     "text": "media_r/t07_47b60ab7.mp4",
-     "flexiact": "media_r/t07_0024c6b1.mp4"
+     "ours": "media_r/t07_b81d6f79.mp4",
+     "dismo": "media_r/t07_54f5eba7.mp4",
+     "text": "media_r/t07_db7ba09b.mp4",
+     "flexiact": "media_r/t07_2aa3ab23.mp4"
     }
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t08",
-   "pair": "shorts_twirl__23_cartoon_crab",
+   "pair": "shorts_twirl__dutch_windmill",
    "motion": "shorts_twirl",
-   "target": "23_cartoon_crab",
+   "target": "dutch_windmill",
    "source": "media/t08_src.mp4",
    "image": "media/t08_target.jpg",
-   "aspect": 1.5,
+   "aspect": 1.8,
    "videos": {
-    "ours": "media/t08_229a73c2.mp4",
-    "dismo": "media/t08_00bb045b.mp4",
-    "text": "media/t08_b1efc55a.mp4",
-    "flexiact": "media/t08_f4f4702c.mp4"
+    "ours": "media/t08_836c8104.mp4",
+    "dismo": "media/t08_acb81796.mp4",
+    "text": "media/t08_2d362828.mp4",
+    "flexiact": "media/t08_7056a200.mp4"
    },
    "resampled": {
     "source": "media_r/t08_src.mp4",
     "videos": {
-     "ours": "media_r/t08_229a73c2.mp4",
-     "dismo": "media_r/t08_00bb045b.mp4",
-     "text": "media_r/t08_b1efc55a.mp4",
-     "flexiact": "media_r/t08_f4f4702c.mp4"
+     "ours": "media_r/t08_836c8104.mp4",
+     "dismo": "media_r/t08_acb81796.mp4",
+     "text": "media_r/t08_2d362828.mp4",
+     "flexiact": "media_r/t08_7056a200.mp4"
     }
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t09",
-   "pair": "09_tiptoe_stretch_relax__10_paper_boy_wide",
+   "pair": "09_tiptoe_stretch_relax__09_knitted_doll_wide",
    "motion": "09_tiptoe_stretch_relax",
-   "target": "10_paper_boy_wide",
+   "target": "09_knitted_doll_wide",
    "source": "media/t09_src.mp4",
    "image": "media/t09_target.jpg",
    "aspect": 1.7333,
    "videos": {
-    "ours": "media/t09_b49dfd6b.mp4",
-    "dismo": "media/t09_85eaccb7.mp4",
-    "text": "media/t09_be14b2f5.mp4",
-    "flexiact": "media/t09_9c7bc335.mp4"
+    "ours": "media/t09_4408fc8b.mp4",
+    "dismo": "media/t09_be31396c.mp4",
+    "text": "media/t09_c2948c5c.mp4",
+    "flexiact": "media/t09_d8209899.mp4"
    },
    "resampled": {
     "source": "media_r/t09_src.mp4",
     "videos": {
-     "ours": "media_r/t09_b49dfd6b.mp4",
-     "dismo": "media_r/t09_85eaccb7.mp4",
-     "text": "media_r/t09_be14b2f5.mp4",
-     "flexiact": "media_r/t09_9c7bc335.mp4"
+     "ours": "media_r/t09_4408fc8b.mp4",
+     "dismo": "media_r/t09_be31396c.mp4",
+     "text": "media_r/t09_c2948c5c.mp4",
+     "flexiact": "media_r/t09_d8209899.mp4"
     }
    },
    "source_aspect": 1.7778
   },
   {
    "id": "t10",
-   "pair": "09_tiptoe_stretch_relax__09_knitted_doll_wide",
+   "pair": "09_tiptoe_stretch_relax__brass_telescope",
    "motion": "09_tiptoe_stretch_relax",
-   "target": "09_knitted_doll_wide",
+   "target": "brass_telescope",
    "source": "media/t10_src.mp4",
    "image": "media/t10_target.jpg",
-   "aspect": 1.7333,
+   "aspect": 1.8,
    "videos": {
-    "ours": "media/t10_4408fc8b.mp4",
-    "dismo": "media/t10_be31396c.mp4",
-    "text": "media/t10_c2948c5c.mp4",
-    "flexiact": "media/t10_d8209899.mp4"
+    "ours": "media/t10_ca348cc4.mp4",
+    "dismo": "media/t10_48ffac4e.mp4",
+    "text": "media/t10_7a9da5dd.mp4",
+    "flexiact": "media/t10_71fb79a7.mp4"
    },
    "resampled": {
     "source": "media_r/t10_src.mp4",
     "videos": {
-     "ours": "media_r/t10_4408fc8b.mp4",
-     "dismo": "media_r/t10_be31396c.mp4",
-     "text": "media_r/t10_c2948c5c.mp4",
-     "flexiact": "media_r/t10_d8209899.mp4"
+     "ours": "media_r/t10_ca348cc4.mp4",
+     "dismo": "media_r/t10_48ffac4e.mp4",
+     "text": "media_r/t10_7a9da5dd.mp4",
+     "flexiact": "media_r/t10_71fb79a7.mp4"
     }
    },
    "source_aspect": 1.7778
