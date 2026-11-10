@@ -1,7 +1,7 @@
 // generated -- do not edit by hand
 const STUDY = {
  "study": "ranking",
- "version": 38,
+ "version": 39,
  "seed": 20261026,
  "methods": [
   "ours",
@@ -15,6 +15,7 @@ const STUDY = {
    "pair": "fantasy_cat__10_paper_boy_wide",
    "motion": "fantasy_cat",
    "target": "10_paper_boy_wide",
+   "ours_seed": 0,
    "source": "media/t01_src.mp4",
    "image": "media/t01_target.jpg",
    "aspect": 1.7333,
@@ -40,6 +41,7 @@ const STUDY = {
    "pair": "fantasy_cat__09_knitted_doll_wide",
    "motion": "fantasy_cat",
    "target": "09_knitted_doll_wide",
+   "ours_seed": 0,
    "source": "media/t02_src.mp4",
    "image": "media/t02_target.jpg",
    "aspect": 1.7333,
@@ -62,25 +64,26 @@ const STUDY = {
   },
   {
    "id": "t03",
-   "pair": "centaur__33_alarm_clock",
+   "pair": "centaur__brass_telescope",
    "motion": "centaur",
-   "target": "33_alarm_clock",
+   "target": "brass_telescope",
+   "ours_seed": 2,
    "source": "media/t03_src.mp4",
    "image": "media/t03_target.jpg",
-   "aspect": 1.1053,
+   "aspect": 1.8,
    "videos": {
-    "ours": "media/t03_9cd96c8f.mp4",
-    "dismo": "media/t03_23b7d8eb.mp4",
-    "text": "media/t03_0ea796d0.mp4",
-    "flexiact": "media/t03_3e814551.mp4"
+    "ours": "media/t03_13e8a9cd.mp4",
+    "dismo": "media/t03_9fab4c03.mp4",
+    "text": "media/t03_4d14e012.mp4",
+    "flexiact": "media/t03_0aef26ab.mp4"
    },
    "resampled": {
     "source": "media_r/t03_src.mp4",
     "videos": {
-     "ours": "media_r/t03_9cd96c8f.mp4",
-     "dismo": "media_r/t03_23b7d8eb.mp4",
-     "text": "media_r/t03_0ea796d0.mp4",
-     "flexiact": "media_r/t03_3e814551.mp4"
+     "ours": "media_r/t03_13e8a9cd.mp4",
+     "dismo": "media_r/t03_9fab4c03.mp4",
+     "text": "media_r/t03_4d14e012.mp4",
+     "flexiact": "media_r/t03_0aef26ab.mp4"
     }
    },
    "source_aspect": 1.7778
@@ -90,6 +93,7 @@ const STUDY = {
    "pair": "centaur__13_straw_scarecrow",
    "motion": "centaur",
    "target": "13_straw_scarecrow",
+   "ours_seed": 0,
    "source": "media/t04_src.mp4",
    "image": "media/t04_target.jpg",
    "aspect": 0.8182,
@@ -115,22 +119,23 @@ const STUDY = {
    "pair": "03_step_forward_wave_step_back__13_straw_scarecrow",
    "motion": "03_step_forward_wave_step_back",
    "target": "13_straw_scarecrow",
+   "ours_seed": 3,
    "source": "media/t05_src.mp4",
    "image": "media/t05_target.jpg",
    "aspect": 0.8182,
    "videos": {
-    "ours": "media/t05_8f959af9.mp4",
-    "dismo": "media/t05_a3a412a8.mp4",
-    "text": "media/t05_f14ffb00.mp4",
-    "flexiact": "media/t05_27bdc501.mp4"
+    "ours": "media/t05_ab29cabd.mp4",
+    "dismo": "media/t05_1d5825d9.mp4",
+    "text": "media/t05_dd178666.mp4",
+    "flexiact": "media/t05_8ec33e6f.mp4"
    },
    "resampled": {
     "source": "media_r/t05_src.mp4",
     "videos": {
-     "ours": "media_r/t05_8f959af9.mp4",
-     "dismo": "media_r/t05_a3a412a8.mp4",
-     "text": "media_r/t05_f14ffb00.mp4",
-     "flexiact": "media_r/t05_27bdc501.mp4"
+     "ours": "media_r/t05_ab29cabd.mp4",
+     "dismo": "media_r/t05_1d5825d9.mp4",
+     "text": "media_r/t05_dd178666.mp4",
+     "flexiact": "media_r/t05_8ec33e6f.mp4"
     }
    },
    "source_aspect": 1.7778
@@ -140,6 +145,7 @@ const STUDY = {
    "pair": "03_step_forward_wave_step_back__23_cartoon_crab",
    "motion": "03_step_forward_wave_step_back",
    "target": "23_cartoon_crab",
+   "ours_seed": 0,
    "source": "media/t06_src.mp4",
    "image": "media/t06_target.jpg",
    "aspect": 1.5,
@@ -162,25 +168,26 @@ const STUDY = {
   },
   {
    "id": "t07",
-   "pair": "shorts_twirl__10_paper_boy_wide",
+   "pair": "shorts_twirl__mountain_hiker",
    "motion": "shorts_twirl",
-   "target": "10_paper_boy_wide",
+   "target": "mountain_hiker",
+   "ours_seed": 3,
    "source": "media/t07_src.mp4",
    "image": "media/t07_target.jpg",
-   "aspect": 1.7333,
+   "aspect": 1.8,
    "videos": {
-    "ours": "media/t07_f8959c36.mp4",
-    "dismo": "media/t07_06f2bbb8.mp4",
-    "text": "media/t07_83d31683.mp4",
-    "flexiact": "media/t07_3b81f999.mp4"
+    "ours": "media/t07_b3b05667.mp4",
+    "dismo": "media/t07_241cafb9.mp4",
+    "text": "media/t07_d9d78705.mp4",
+    "flexiact": "media/t07_af60998b.mp4"
    },
    "resampled": {
     "source": "media_r/t07_src.mp4",
     "videos": {
-     "ours": "media_r/t07_f8959c36.mp4",
-     "dismo": "media_r/t07_06f2bbb8.mp4",
-     "text": "media_r/t07_83d31683.mp4",
-     "flexiact": "media_r/t07_3b81f999.mp4"
+     "ours": "media_r/t07_b3b05667.mp4",
+     "dismo": "media_r/t07_241cafb9.mp4",
+     "text": "media_r/t07_d9d78705.mp4",
+     "flexiact": "media_r/t07_af60998b.mp4"
     }
    },
    "source_aspect": 1.7778
@@ -190,6 +197,7 @@ const STUDY = {
    "pair": "shorts_twirl__23_cartoon_crab",
    "motion": "shorts_twirl",
    "target": "23_cartoon_crab",
+   "ours_seed": 0,
    "source": "media/t08_src.mp4",
    "image": "media/t08_target.jpg",
    "aspect": 1.5,
@@ -215,6 +223,7 @@ const STUDY = {
    "pair": "09_tiptoe_stretch_relax__09_knitted_doll_wide",
    "motion": "09_tiptoe_stretch_relax",
    "target": "09_knitted_doll_wide",
+   "ours_seed": 0,
    "source": "media/t09_src.mp4",
    "image": "media/t09_target.jpg",
    "aspect": 1.7333,
@@ -237,25 +246,26 @@ const STUDY = {
   },
   {
    "id": "t10",
-   "pair": "09_tiptoe_stretch_relax__mountain_hiker",
+   "pair": "09_tiptoe_stretch_relax__33_alarm_clock",
    "motion": "09_tiptoe_stretch_relax",
-   "target": "mountain_hiker",
+   "target": "33_alarm_clock",
+   "ours_seed": 2,
    "source": "media/t10_src.mp4",
    "image": "media/t10_target.jpg",
-   "aspect": 1.8,
+   "aspect": 1.1053,
    "videos": {
-    "ours": "media/t10_f2455391.mp4",
-    "dismo": "media/t10_f49eade6.mp4",
-    "text": "media/t10_4d56dba2.mp4",
-    "flexiact": "media/t10_ae7267c1.mp4"
+    "ours": "media/t10_8189287d.mp4",
+    "dismo": "media/t10_45a1b795.mp4",
+    "text": "media/t10_479334c2.mp4",
+    "flexiact": "media/t10_871ed36d.mp4"
    },
    "resampled": {
     "source": "media_r/t10_src.mp4",
     "videos": {
-     "ours": "media_r/t10_f2455391.mp4",
-     "dismo": "media_r/t10_f49eade6.mp4",
-     "text": "media_r/t10_4d56dba2.mp4",
-     "flexiact": "media_r/t10_ae7267c1.mp4"
+     "ours": "media_r/t10_8189287d.mp4",
+     "dismo": "media_r/t10_45a1b795.mp4",
+     "text": "media_r/t10_479334c2.mp4",
+     "flexiact": "media_r/t10_871ed36d.mp4"
     }
    },
    "source_aspect": 1.7778
