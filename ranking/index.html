@@ -38,7 +38,6 @@ ol.steps { margin: 0; padding-left: 1.3em; display: grid; gap: 8px }
 .callout { background: var(--call-bg); border-left: 4px solid var(--call-line); border-radius: 8px; padding: 10px 14px }
 .notice { background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 10px 14px; font-size: .92rem }
 .emailf { display: grid; gap: 6px } .emailf label { font-weight: 600 }
-.emailerr { color: var(--warn); font-size: .9rem; margin: 0 }
 textarea#comment-t, input#email-t { width: 100%; font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; resize: vertical }
 .btn { cursor: pointer; border: 1px solid var(--line); background: var(--panel); padding: 9px 18px; border-radius: 9px; font-weight: 600 }
 .btn:hover:not(:disabled) { border-color: var(--muted) }
@@ -121,8 +120,7 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
       <ol class="steps" id="steps"></ol>
       <p class="muted">Click a video to play it next to the source motion, or press Play all to play all four together; clicking a video then plays just that one. Please watch the results carefully before marking your choices. A laptop or desktop screen works best.</p>
       <div class="emailf" id="emailf"><label for="email-t">Your email</label>
-        <input type="email" id="email-t" maxlength="200" autocomplete="email" required>
-        <p class="emailerr" id="email-err" hidden>Please enter a valid email address to start.</p></div>
+        <input type="email" id="email-t" maxlength="200" autocomplete="email"></div>
       <div class="row"><button type="button" class="btn primary" id="start">Start</button></div>
     </div>
     <p class="notice" id="preview" hidden>Preview mode: no answer endpoint is set in config.js, so nothing will be sent.</p>
@@ -211,10 +209,7 @@ if (!endpoint) $('preview').hidden = false;
 if (endpoint) fetch(`${endpoint}?count=${encodeURIComponent(`${STUDY.study}_motion`)}`).then(r => r.json())
   .then(d => { if (d && d.open === false) { $('closed').hidden = false; $('howto').hidden = true; $('again').hidden = true; } }).catch(() => {});
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
-// email required (user 2026-11-11 "so email is essential"): Start checks the field first
-const emailOk = () => { const e = $('email-t'); return e.value.trim() !== '' && e.checkValidity(); };
-$('email-t').addEventListener('input', () => { if (emailOk()) $('email-err').hidden = true; });
-$('start').onclick = () => { if (!emailOk()) { $('email-err').hidden = false; $('email-t').focus(); return; } started = new Date().toISOString(); $('intro').hidden = true; $('trial').hidden = false; show(0); };
+$('start').onclick = () => { started = new Date().toISOString(); $('intro').hidden = true; $('trial').hidden = false; show(0); };
 
 // v40: the source loops on its own; a clicked video plays from the start together with the source (both restart when the source ends),
 // the others stay paused on their first frame; clicking the playing video pauses it. v42 (user 2026-11-10): Play all plays all four with the
