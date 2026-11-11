@@ -190,8 +190,8 @@ $('steps').innerHTML = [
 ].map(s => `<li>${s}</li>`).join('');
 $('ask').innerHTML = `Click a video on the right to play it, then press <b>Select</b> under the <b>best</b> and the <b>second best</b>. Please make your judgements based on three criteria:
   a) <b>how closely the resulting video reproduces the source motion</b>; b) <b>is it still the same target subject</b>: its pose may change to perform the motion, but it should not
-  turn into something else, and nothing from the source video (e.g., appearance, clothing, body shape, material, texture, or background)
-  should carry over; and c) <b>does the result look natural for that
+  turn into something else, and <b>nothing from the source video (e.g., appearance, clothing, body shape, material, texture, or background)
+  should carry over</b>; and c) <b>does the result look natural for that
   subject</b>, without extraneous visual artifacts. If you want an undo, simply press the selected button again to deselect it.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
