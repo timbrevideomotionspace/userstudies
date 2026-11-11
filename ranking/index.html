@@ -113,6 +113,7 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
     <h1>User study on motion transfer</h1>
     <p class="callout"><strong>Please take your time.</strong></p>
     <p>Thank you for taking part. The study is anonymous and it contains 10 questions, which should take about 5-10 minutes to complete.</p>
+    <p class="notice" id="closed" hidden>This study has reached its number of participants and is now closed. Thank you for your interest!</p>
     <p class="notice" id="again" hidden>You have already completed this study on this device. Thank you! <button type="button" class="linkish" id="again-go">Take it again anyway</button></p>
     <div id="howto" class="howto">
       <ol class="steps" id="steps"></ol>
@@ -201,6 +202,9 @@ $('ask').innerHTML = `Click a video on the right to play it (or press <b>Play al
   subject</b>, without extraneous visual artifacts. If you want an undo, simply press the selected button again to deselect it.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
+// cap (user 2026-11-11): the sheet takes 42 more submissions per study; once full, the intro says so and Start is hidden (no answer = stays open)
+if (endpoint) fetch(`${endpoint}?count=${encodeURIComponent(`${STUDY.study}_motion`)}`).then(r => r.json())
+  .then(d => { if (d && d.open === false) { $('closed').hidden = false; $('howto').hidden = true; $('again').hidden = true; } }).catch(() => {});
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
 $('start').onclick = () => { started = new Date().toISOString(); $('intro').hidden = true; $('trial').hidden = false; show(0); };
 
