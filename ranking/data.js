@@ -1,7 +1,7 @@
 // generated -- do not edit by hand
 const STUDY = {
  "study": "ranking",
- "version": 47,
+ "version": 48,
  "seed": 20261026,
  "methods": [
   "ours",
