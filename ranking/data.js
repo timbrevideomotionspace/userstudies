@@ -1,7 +1,7 @@
 // generated -- do not edit by hand
 const STUDY = {
  "study": "ranking",
- "version": 43,
+ "version": 44,
  "seed": 20261026,
  "methods": [
   "ours",
@@ -116,26 +116,26 @@ const STUDY = {
   },
   {
    "id": "t05",
-   "pair": "03_step_forward_wave_step_back__13_straw_scarecrow",
+   "pair": "03_step_forward_wave_step_back__10_paper_boy_wide",
    "motion": "03_step_forward_wave_step_back",
-   "target": "13_straw_scarecrow",
+   "target": "10_paper_boy_wide",
    "ours_seed": 3,
    "source": "media/t05_src.mp4",
    "image": "media/t05_target.jpg",
-   "aspect": 0.8182,
+   "aspect": 1.7333,
    "videos": {
-    "ours": "media/t05_ab29cabd.mp4",
-    "dismo": "media/t05_1d5825d9.mp4",
-    "text": "media/t05_dd178666.mp4",
-    "flexiact": "media/t05_8ec33e6f.mp4"
+    "ours": "media/t05_9142cbc3.mp4",
+    "dismo": "media/t05_06fb82be.mp4",
+    "text": "media/t05_061406f3.mp4",
+    "flexiact": "media/t05_e6acf21a.mp4"
    },
    "resampled": {
     "source": "media_r/t05_src.mp4",
     "videos": {
-     "ours": "media_r/t05_ab29cabd.mp4",
-     "dismo": "media_r/t05_1d5825d9.mp4",
-     "text": "media_r/t05_dd178666.mp4",
-     "flexiact": "media_r/t05_8ec33e6f.mp4"
+     "ours": "media_r/t05_9142cbc3.mp4",
+     "dismo": "media_r/t05_06fb82be.mp4",
+     "text": "media_r/t05_061406f3.mp4",
+     "flexiact": "media_r/t05_e6acf21a.mp4"
     }
    },
    "source_aspect": 1.7778
