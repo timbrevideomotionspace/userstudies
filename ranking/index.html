@@ -37,7 +37,8 @@ h2 { font: 650 1.3rem/1.2 var(--body); margin: 0 }
 ol.steps { margin: 0; padding-left: 1.3em; display: grid; gap: 8px }
 .callout { background: var(--call-bg); border-left: 4px solid var(--call-line); border-radius: 8px; padding: 10px 14px }
 .notice { background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 10px 14px; font-size: .92rem }
-textarea#comment-t { width: 100%; font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; resize: vertical }
+.emailf { display: grid; gap: 6px } .emailf label { font-weight: 600 }
+textarea#comment-t, input#email-t { width: 100%; font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; resize: vertical }
 .btn { cursor: pointer; border: 1px solid var(--line); background: var(--panel); padding: 9px 18px; border-radius: 9px; font-weight: 600 }
 .btn:hover:not(:disabled) { border-color: var(--muted) }
 .btn:disabled { opacity: .4; cursor: default }
@@ -118,6 +119,8 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
     <div id="howto" class="howto">
       <ol class="steps" id="steps"></ol>
       <p class="muted">Click a video to play it next to the source motion, or press Play all to play all four together; clicking a video then plays just that one. Please watch the results carefully before marking your choices. A laptop or desktop screen works best.</p>
+      <div class="emailf" id="emailf"><label for="email-t">Your email (optional)</label>
+        <input type="email" id="email-t" maxlength="200" autocomplete="email" placeholder="Optional"></div>
       <div class="row"><button type="button" class="btn primary" id="start">Start</button></div>
     </div>
     <p class="notice" id="preview" hidden>Preview mode: no answer endpoint is set in config.js, so nothing will be sent.</p>
@@ -302,18 +305,18 @@ document.addEventListener('keydown', e => {
 window.addEventListener('beforeunload', e => { if (started && !payload) { e.preventDefault(); e.returnValue = ''; } });
 
 function finish() {
-  const comment = $('comment-t').value.trim();
+  const comment = $('comment-t').value.trim(), email = $('email-t').value.trim();
   const fin = new Date().toISOString(), scr = `${screen.width}x${screen.height}`;
   const columns = ['submission', 'participant', 'task', 'videos', 'position', 'trial', 'pair', 'motion', 'target', 'ranking',
-    ...STUDY.methods.map(k => `rank_${k}`), 'shown', 'seconds', 'started', 'finished', 'screen', 'user_agent', 'comment'];   // comment: first row only
+    ...STUDY.methods.map(k => `rank_${k}`), 'shown', 'seconds', 'started', 'finished', 'screen', 'user_agent', 'comment', 'email'];   // comment, email: first row only (email: v46, user 2026-11-11)
   const rows = plan.map((p, n) => {
     const order = p.order.map(j => p.shown[j]);
     return [sub, pid, 'motion', mode, n + 1, p.t.id, p.t.pair, p.t.motion, p.t.target, order.join(' > '),
       ...STUDY.methods.map(k => order.indexOf(k) + 1 || ''), p.shown.map((k, j) => `${LETTERS[j]}=${k}`).join(' '), Math.round(p.ms / 100) / 10,
-      started, fin, scr, navigator.userAgent, n ? '' : comment];
+      started, fin, scr, navigator.userAgent, n ? '' : comment, n ? '' : email];
   });
   payload = {study: `${STUDY.study}_motion`, task: 'motion', videos: mode, version: STUDY.version, seed: STUDY.seed, submission: sub, participant: pid, started,
-    finished: fin, comment, columns, rows};
+    finished: fin, comment, email, columns, rows};
   $('comment').hidden = true; $('done').hidden = false; send();
 }
 
