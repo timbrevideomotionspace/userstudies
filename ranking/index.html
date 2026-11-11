@@ -7,21 +7,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap">
 <style>
-/* Ranking study: intro -> 10 examples (source motion above the target image on the left; four shuffled videos A-D on the right, click
-   the best, then the second best; the other two stay unranked) -> answers posted to the sheet (config.js ENDPOINT, tab ranking_motion).
+/* Ranking study: intro -> 10 examples (source motion above the target image on the left; four shuffled videos A-D on the right; click a
+   video to play it in step with the source, one at a time (v40, user 2026-11-10 "too busy"); press Select under the best, then the second best;
+   the other two stay unranked) -> answers posted to the sheet (config.js ENDPOINT, tab ranking_motion).
    Nothing on screen says which method made which video. (The birthday split with a Jul-Dec realism task was removed 2026-10-29; everyone does the motion task.)
    Videos are always the resampled copies (media_r/: 25 frames at 9 fps; user 2026-10-30, no choice on the intro); sent as `videos`. */
 :root {
   --bg: #f4f5f7; --panel: #ffffff; --ink: #15171f; --muted: #5b6070; --line: #d9dce4; --accent: #2f5bd3; --accent-ink: #ffffff;
-  --accent-soft: #e4eafb; --frame: #0b0c10; --warn: #9a3412; --warn-soft: #fdeee4;
+  --accent-soft: #e4eafb; --frame: #0b0c10; --warn: #9a3412; --warn-soft: #fdeee4; --call-bg: #fff4d6; --call-line: #e0a800;
   --body: "Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #111217; --panel: #1a1c24; --ink: #e9eaf0; --muted: #9da1b1; --line: #2c2f3b; --accent: #8ea8ff; --accent-ink: #0d1020;
-  --accent-soft: #232a45; --frame: #000000; --warn: #fdba74; --warn-soft: #3a2414; color-scheme: dark } }
+  --accent-soft: #232a45; --frame: #000000; --warn: #fdba74; --warn-soft: #3a2414; --call-bg: #3a3112; --call-line: #e0a800; color-scheme: dark } }
 :root[data-theme="dark"] {
   --bg: #111217; --panel: #1a1c24; --ink: #e9eaf0; --muted: #9da1b1; --line: #2c2f3b; --accent: #8ea8ff; --accent-ink: #0d1020;
-  --accent-soft: #232a45; --frame: #000000; --warn: #fdba74; --warn-soft: #3a2414; color-scheme: dark }
+  --accent-soft: #232a45; --frame: #000000; --warn: #fdba74; --warn-soft: #3a2414; --call-bg: #3a3112; --call-line: #e0a800; color-scheme: dark }
 * { box-sizing: border-box }
 html, body { margin: 0 }
 body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--body); -webkit-font-smoothing: antialiased }
@@ -34,13 +35,14 @@ h1 { font: 700 1.75rem/1.15 var(--body); margin: 0; letter-spacing: -.015em; tex
 h2 { font: 650 1.3rem/1.2 var(--body); margin: 0 }
 .card p { margin: 0 } .muted { color: var(--muted) }
 ol.steps { margin: 0; padding-left: 1.3em; display: grid; gap: 8px }
+.callout { background: var(--call-bg); border-left: 4px solid var(--call-line); border-radius: 8px; padding: 10px 14px }
 .notice { background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 10px 14px; font-size: .92rem }
 textarea#comment-t { width: 100%; font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; resize: vertical }
 .btn { cursor: pointer; border: 1px solid var(--line); background: var(--panel); padding: 9px 18px; border-radius: 9px; font-weight: 600 }
 .btn:hover:not(:disabled) { border-color: var(--muted) }
 .btn:disabled { opacity: .4; cursor: default }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink) }
-.btn:focus-visible, .cand:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
+.btn:focus-visible, .play:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
 .linkish { all: unset; cursor: pointer; color: var(--accent); text-decoration: underline; font-size: .9rem }
 .linkish:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
 .howto { display: grid; gap: 14px }
@@ -51,9 +53,9 @@ textarea#comment-t { width: 100%; font: inherit; color: inherit; background: var
 .count { font-weight: 650; font-variant-numeric: tabular-nums }
 .progress { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden } .progress i { display: block; height: 100%; background: var(--accent); transition: width .25s }
 .ask { grid-column: 1 / -1; margin: 0; color: var(--muted) } .ask b { color: var(--ink) }
-.stage { --maxh: calc((100vh - 248px) / var(--rows) - 34px); display: grid; grid-template-columns: minmax(180px, 290px) minmax(0, 1fr); gap: 22px;
+.stage { --maxh: calc((100vh - 248px) / var(--rows) - 46px); display: grid; grid-template-columns: minmax(180px, 290px) minmax(0, 1fr); gap: 22px;
   margin-top: 14px; align-items: start }
-@supports (height: 100dvh) { .stage { --maxh: calc((100dvh - 248px) / var(--rows) - 34px) } }
+@supports (height: 100dvh) { .stage { --maxh: calc((100dvh - 248px) / var(--rows) - 46px) } }
 .ref { display: grid; gap: 14px; --rh: calc((100vh - 248px) / 2 - 34px) }
 .ref figure { margin: 0; display: grid; gap: 5px; justify-items: start }
 .lab { font: 600 .74rem var(--body); text-transform: uppercase; letter-spacing: .07em; color: var(--muted) }
@@ -62,10 +64,17 @@ textarea#comment-t { width: 100%; font: inherit; color: inherit; background: var
 .ref .src { aspect-ratio: var(--sar); width: min(100%, calc(var(--rh) * var(--sar))) }
 .ref .tgt { aspect-ratio: var(--ar); width: min(100%, calc(var(--rh) * var(--ar))) }
 .cands { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 14px 14px }
-.cand { all: unset; cursor: pointer; display: grid; gap: 6px; justify-items: center; border-radius: 10px; min-width: 0 }
-.cand .frame { aspect-ratio: var(--ar); width: min(100%, calc(var(--maxh) * var(--ar))); box-shadow: 0 0 0 2px transparent; transition: box-shadow .12s }
-.cand:hover .frame { box-shadow: 0 0 0 2px var(--muted) }
+.cand { display: grid; gap: 6px; justify-items: center; min-width: 0 }
+.play { all: unset; cursor: pointer; display: block; border-radius: 8px; width: min(100%, calc(var(--maxh) * var(--ar))) }
+.play .frame { aspect-ratio: var(--ar); width: 100%; box-shadow: 0 0 0 2px transparent; transition: box-shadow .12s }
+.play:hover .frame { box-shadow: 0 0 0 2px var(--muted) }
 .cand.on .frame { box-shadow: 0 0 0 4px var(--accent) }
+.pi { position: absolute; inset: 0; margin: auto; width: 56px; height: 56px; border-radius: 50%; background: rgba(0, 0, 0, .55); pointer-events: none }
+.pi::before { content: ""; position: absolute; left: 21px; top: 17px; border-style: solid; border-width: 11px 0 11px 18px; border-color: transparent transparent transparent #fff }
+.cand.playing .pi { display: none }
+.cline { display: flex; gap: 6px 10px; align-items: center; justify-content: center; flex-wrap: wrap }
+.sel { padding: 5px 14px }
+.sel[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink) }
 .badge { position: absolute; top: 8px; left: 8px; min-width: 44px; padding: 3px 10px; border-radius: 999px; background: var(--accent); color: var(--accent-ink);
   font: 700 .92rem var(--body); text-align: center; box-shadow: 0 1px 4px rgba(0, 0, 0, .35) }
 .cand:not(.on) .badge { display: none }
@@ -85,7 +94,7 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
   .ref { grid-template-columns: 1fr 1fr; align-items: start }
   .ref .src, .ref .tgt { width: 100%; max-height: 46vh }
   .cands { grid-template-columns: repeat(2, minmax(0, 1fr)) }
-  .cand .frame { width: 100% }
+  .play { width: 100% }
   .card { padding: 22px 18px 24px }
   .slots { gap: 5px } .slot { min-width: 0; padding: 4px 7px; gap: 4px } .slots .end { font-size: .76rem }
 }
@@ -97,11 +106,12 @@ pre.dump { max-height: 260px; overflow: auto; background: var(--bg); border: 1px
 <main id="intro" class="screen">
   <div class="card">
     <h1>User study on motion transfer</h1>
+    <p class="callout"><strong>Please take your time.</strong></p>
     <p>Thank you for taking part. The study is anonymous and it contains 10 questions, which should take about 5-10 minutes to complete.</p>
     <p class="notice" id="again" hidden>You have already completed this study on this device. Thank you! <button type="button" class="linkish" id="again-go">Take it again anyway</button></p>
     <div id="howto" class="howto">
       <ol class="steps" id="steps"></ol>
-      <p class="muted">All videos loop and play together. Please take your time and watch the results carefully before marking your choices. A laptop or desktop screen works best.</p>
+      <p class="muted">Click a video to play it next to the source motion; only one plays at a time. Please watch the results carefully before marking your choices. A laptop or desktop screen works best.</p>
       <div class="row"><button type="button" class="btn primary" id="start">Start</button></div>
     </div>
     <p class="notice" id="preview" hidden>Preview mode: no answer endpoint is set in config.js, so nothing will be sent.</p>
@@ -174,25 +184,41 @@ const V = t => mode === 'resampled' ? t.resampled : t;   // which copies to play
 $('steps').innerHTML = [
   `In each of the 10 questions, you will see, on the left column, a <b>source video</b> showing a motion and an image containing the <b>target subject</b>.`,
   `To their right are four videos that transfer the source motion onto the target subject, each produced by a different method. Their order is shuffled for every question.`,
-  `Click the <b>best</b> video result, then the <b>second best</b>. Please make your choice by judging how closely the resulting video follows the source motion
+  `Click a video to play it, then press <b>Select</b> under the <b>best</b> video result, then under the <b>second best</b>. Please make your choice by judging how closely the resulting video follows the source motion
    while keeping the appearance of the target subject, without extraneous visual artifacts. In particular, please focus on the transfer of the character’s
    motion, not the objects the character may be interacting with in the source video. Those objects could be discarded in your judgment.`,
 ].map(s => `<li>${s}</li>`).join('');
-$('ask').innerHTML = `Click the <b>best</b> and the <b>second best</b> videos on the right. Please make your judgements based on three criteria:
+$('ask').innerHTML = `Click a video on the right to play it, then press <b>Select</b> under the <b>best</b> and the <b>second best</b>. Please make your judgements based on three criteria:
   a) <b>how closely the resulting video reproduces the source motion</b>; b) <b>is it still the same target subject</b>: its pose may change to perform the motion, but it should not
   turn into something else, and nothing from the source video (e.g., appearance, clothing, body shape, material, texture, or background)
   should carry over; and c) <b>does the result look natural for that
-  subject</b>, without extraneous visual artifacts. If you want an undo, simply click on the selected video again to deselect it.`;
+  subject</b>, without extraneous visual artifacts. If you want an undo, simply press the selected button again to deselect it.`;
 if (store.get(DONE_KEY)) { $('again').hidden = false; $('howto').hidden = true; }
 if (!endpoint) $('preview').hidden = false;
 $('again-go').onclick = () => { $('again').hidden = true; $('howto').hidden = false; $('start').focus(); };
 $('start').onclick = () => { started = new Date().toISOString(); $('intro').hidden = true; $('trial').hidden = false; show(0); };
 
-function sync(vs) {                         // the first clip (the source) restarts everything, so all clips stay in step
-  const master = vs[0], restart = () => vs.forEach(v => { try { v.currentTime = 0; v.play().catch(() => {}); } catch (e) {} });
-  master.addEventListener('ended', restart); let ready = 0;
-  vs.forEach(v => v.addEventListener('canplay', () => { if (++ready === vs.length) restart(); }, {once: true}));
-  setTimeout(() => { if (ready < vs.length && vs[0].isConnected) restart(); }, 2000);
+// v40: the source loops on its own; a clicked video plays from the start together with the source (both restart when the source ends),
+// the others stay paused on their first frame; clicking the playing video pauses it
+const restart = vs => vs.forEach(v => { try { v.currentTime = 0; v.play().catch(() => {}); } catch (e) {} });
+let P = null;
+function player() {
+  const src = $('srcf').querySelector('video'), c = [...$('cands').querySelectorAll('.cand video')];
+  P = {src, c, on: -1};
+  src.addEventListener('ended', () => restart(P.on >= 0 ? [src, c[P.on]] : [src]));
+  src.play().catch(() => {}); paintPlay();
+}
+function play(j) {
+  const was = P.on;
+  P.c.forEach((v, k) => { if (k !== j && k === was) { v.pause(); try { v.currentTime = 0; } catch (e) {} } });
+  if (was === j) { P.c[j].pause(); P.on = -1; } else { P.on = j; restart([P.src, P.c[j]]); }
+  paintPlay();
+}
+function paintPlay() {
+  $('cands').querySelectorAll('.cand').forEach(b => {
+    const j = +b.dataset.j; b.classList.toggle('playing', j === P.on);
+    b.querySelector('.play').setAttribute('aria-label', `${j === P.on ? 'Pause' : 'Play'} video ${LETTERS[j]}`);
+  });
 }
 
 function preload(p) {                       // warm the next example's clips so it starts at once
@@ -210,10 +236,11 @@ function show(i) {
   $('prog').style.width = `${100 * i / plan.length}%`;
   $('srcf').innerHTML = `<video src="${V(t).source}" muted playsinline preload="auto"></video>`;
   $('tgt').src = t.image;
-  $('cands').innerHTML = p.shown.map((k, j) => `<button type="button" class="cand" data-j="${j}">
-    <div class="frame"><video src="${V(t).videos[k]}" muted playsinline preload="auto"></video><span class="badge"></span></div>
-    <span class="name">Video ${LETTERS[j]}</span></button>`).join('');
-  sync([...$('srcf').querySelectorAll('video'), ...$('cands').querySelectorAll('video')]);
+  $('cands').innerHTML = p.shown.map((k, j) => `<div class="cand" data-j="${j}">
+    <button type="button" class="play" data-j="${j}"><div class="frame"><video src="${V(t).videos[k]}#t=0.001" muted playsinline preload="auto"></video>
+    <span class="badge"></span><span class="pi" aria-hidden="true"></span></div></button>
+    <div class="cline"><span class="name">Video ${LETTERS[j]}</span><button type="button" class="btn sel" data-j="${j}">Select</button></div></div>`).join('');
+  player();
   $('back').disabled = i === 0; $('next').textContent = i === plan.length - 1 ? 'Finish' : 'Next';
   paint(); preload(plan[i + 1]); window.scrollTo(0, 0);
 }
@@ -223,7 +250,9 @@ function paint() {
   $('cands').querySelectorAll('.cand').forEach(b => {
     const j = +b.dataset.j, r = p.order.indexOf(j);
     b.classList.toggle('on', r >= 0); b.querySelector('.badge').textContent = r >= 0 ? ORD[r] : '';
-    b.setAttribute('aria-label', `Video ${LETTERS[j]}${r >= 0 ? `, picked ${ORD[r]}` : ', not picked'}`);
+    const s = b.querySelector('.sel'); s.textContent = r >= 0 ? `Selected · ${ORD[r]}` : 'Select';
+    s.setAttribute('aria-pressed', r >= 0); s.disabled = r < 0 && p.order.length >= ORD.length;
+    s.setAttribute('aria-label', `Video ${LETTERS[j]}${r >= 0 ? `, picked ${ORD[r]}, press to undo` : ', select'}`);
   });
   $('slots').innerHTML = ORD.map((o, r) => {
     const j = p.order[r]; return `<span class="slot ${j != null ? 'full' : ''}"><small>${o}</small><b>${j != null ? LETTERS[j] : '–'}</b></span>`;
@@ -237,7 +266,10 @@ function toggle(j) {
   paint();
 }
 
-$('cands').addEventListener('click', e => { const b = e.target.closest('.cand'); if (b) toggle(+b.dataset.j); });
+$('cands').addEventListener('click', e => {
+  const s = e.target.closest('.sel'); if (s) return toggle(+s.dataset.j);
+  const b = e.target.closest('.play'); if (b) play(+b.dataset.j);
+});
 $('reset').onclick = () => { plan[cur].order = []; paint(); };
 $('back').onclick = () => cur > 0 && show(cur - 1);
 $('next').onclick = () => { if ($('next').disabled) return; cur < plan.length - 1 ? show(cur + 1) : toComment(); };
@@ -247,8 +279,8 @@ $('comment-back').onclick = () => { $('comment').hidden = true; $('trial').hidde
 $('comment-send').onclick = () => finish();
 document.addEventListener('keydown', e => {
   if ($('trial').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
-  const j = LETTERS.indexOf(e.key.toUpperCase());
-  if (j >= 0) { e.preventDefault(); toggle(j); } else if (e.key === 'Enter' && !$('next').disabled) { e.preventDefault(); $('next').click(); }
+  const j = LETTERS.indexOf(e.key.toUpperCase()), k = ['1', '2', '3', '4'].indexOf(e.key);
+  if (j >= 0) { e.preventDefault(); toggle(j); } else if (k >= 0) { e.preventDefault(); play(k); } else if (e.key === 'Enter' && !$('next').disabled) { e.preventDefault(); $('next').click(); }
 });
 window.addEventListener('beforeunload', e => { if (started && !payload) { e.preventDefault(); e.returnValue = ''; } });
 
